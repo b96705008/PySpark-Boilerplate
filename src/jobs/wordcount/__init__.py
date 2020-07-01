@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import re
 from functools import partial
 from shared.context import JobContext
@@ -16,8 +18,8 @@ def to_pairs(context, word):
     return word, 1
 
 
-def analyze(sc):
-    print "Running wordcount"
+def run(sc, **kwargs):
+    print("Running wordcount")
     context = WordCountJobContext(sc)
 
     text = """
@@ -42,7 +44,10 @@ Quisque arcu nunc, feugiat ut mi quis, blandit varius elit. Quisque ullamcorper 
     ordered = counts.sortBy(lambda pair: pair[1], ascending=False)
 
     result = ordered.collect()
-    print result
+    print(result)
     context.print_accumulators()
+
+    print('kwargs:')
+    print(kwargs)
 
     return result

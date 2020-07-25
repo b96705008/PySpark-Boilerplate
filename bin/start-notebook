@@ -9,4 +9,5 @@ export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 export PYTHONPATH=${PROJECT_ROOT}/dist/jobs.zip:${PROJECT_ROOT}/dist/libs.zip:$PYTHONPATH
 
-$SPARK_HOME/bin/pyspark
+$SPARK_HOME/bin/pyspark \
+    --files ${PROJECT_ROOT}/conf/config.json
